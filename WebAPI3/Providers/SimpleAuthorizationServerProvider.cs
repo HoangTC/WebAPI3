@@ -14,11 +14,16 @@ namespace WebAPI3.Providers
     {
         public override Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
-            context.Validated();
+            //context.Validated();
+            //return Task.FromResult<object>(null);
+
+            if (context.ClientId == null)
+            {
+                context.Validated();
+            }
+
             return Task.FromResult<object>(null);
         }
-
-
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
